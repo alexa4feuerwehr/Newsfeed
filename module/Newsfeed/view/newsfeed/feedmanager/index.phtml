@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-lg-4 col-md-4">
+        to-do geplante
+    </div>
+    <div class="col-lg-4 col-md-4">
+        to-do acrhiv
+    </div>
+    <div class="col-lg-4 col-md-4">
+
+
+
+        to-do neuer eitrag
+
+        <textarea id="text">
+            Dies ist ein Beispiel
+
+        </textarea>
+
+        <?php if(!$objUser->AmazonUsername): ?>
+            <p>Um diese Nachricht vorlesen zu lassen, muss der Account mit einem Amazon Konto verknüpft werden - <a href="/Dashboard/linkWithAmazon">verknüpfen</a></p>
+
+        <?php else: ?>
+            <button class="btn" onclick="sayAtAlexas()">Vorlesen</button>
+        <?php endif; ?>
+
+    </div>
+</div>
+
+<script>
+function sayAtAlexas()
+{
+    $.ajax({
+        type: 'POST',
+        url: '/Feedmanager/readText',
+        data: {Text:$('#text').text()},
+        success: function( data ) {
+
+        }
+    });
+}
+</script>

@@ -1,0 +1,19 @@
+<?php
+
+return [
+    'redirect_handler_module' => [
+        'allow_not_routed_url' => false,
+        'default_url' => '/',
+        'options' => [
+            'exclude_urls' => [
+                // 'https://www.github.com/samsonasik/RedirectHandlerModule',
+            ], // to allow excluded urls to always be redirected
+            'exclude_hosts' => [
+                // 'www.github.com'
+            ],
+            'exclude_domains' => [
+                // 'google.com',
+            ],
+        ],
+    ],
+];

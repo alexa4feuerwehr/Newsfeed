@@ -1,0 +1,46 @@
+{
+  "name": "F3 Trainer",
+  "minimum-stability": "stable",
+  "prefer-stabl": true,
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Manuel Geil",
+      "email": "manuel@geil.name"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "pear",
+      "url": "https://pear.php.net"
+    },
+    {
+      "type": "composer",
+      "url": "https://packages.zendframework.com/"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/necromant2005/zf2-twb-bundle"
+    }
+  ],
+  "require": {
+    "doctrine/doctrine-orm-module": "*",
+    "gedmo/doctrine-extensions": "*",
+    "swiftmailer/swiftmailer" : "*",
+    "zendframework/zend-servicemanager": "*",
+    "zendframework/zendframework": "3.*",
+    "zendframework/zend-developer-tools": "*",
+    "zendframework/zend-component-installer" : "*",
+    "zendframework/zend-inputfilter" : "*",
+    "zendframework/zend-uri" : "*",
+    "enlitepro/enlite-monolog" : "*",
+    "neilime/zf2-twb-bundle": "*",
+    "samsonasik/redirect-handler-module": "*",
+    "zfcampus/zf-mvc-auth": "^1.4",
+    "cpliakas/doctrine-password": "*",
+    "zfcampus/zf-console": "^1.4",
+    "phpunit/phpunit" : "*",
+    "zendframework/zend-test" : "*",
+    "electrolinux/phpquery" : "*"
+  }
+}

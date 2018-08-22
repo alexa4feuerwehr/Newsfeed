@@ -1,0 +1,6 @@
+.vagrant/*
+data/cache/*
+data/DoctrineORMModule/*
+data/log/*
+config/autoload/*.local.php
+*.log

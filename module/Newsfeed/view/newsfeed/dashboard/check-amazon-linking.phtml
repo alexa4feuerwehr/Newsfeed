@@ -1,0 +1,14 @@
+
+<table>
+    <?php foreach($arrAlexas AS $strKey=>$arrAlexa): ?>
+        <tr>
+            <td>
+                <input type="checkbox" name="selected[]" value="<?=$strKey?>" onclick="updateSelectedAlexas('<?=$strKey?>', this.checked)" <?= in_array($strKey, $arrSelectedAlexas) ? 'checked="checked"' : ''?>>
+                &nbsp;
+            </td>
+            <td>
+                <?= $arrAlexa['accountName'];?>
+            </td>
+        </tr>
+    <?php endforeach;?>
+</table>

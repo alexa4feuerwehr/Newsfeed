@@ -1,0 +1,75 @@
+language: php
+
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7.1
+  - 7.2
+  - nightly
+
+env:
+  - DEPS=latest
+  - DEPS=lowest
+
+install:
+  - if [[ $DEPS == 'latest' ]]; then travis_retry composer update --no-interaction --prefer-source ; fi
+  - if [[ $DEPS == 'lowest' ]]; then travis_retry composer update --no-interaction --prefer-source --prefer-lowest ; fi
+
+script:
+  - composer test:units
+
+jobs:
+  allow_failures:
+    - php: nightly
+  include:
+    - stage: test
+      php: 5.3
+      dist: precise
+      env: DEPS=latest
+      script:
+        - composer update --no-interaction --prefer-source
+        - composer test:units
+    - stage: test
+      php: 5.3
+      dist: precise
+      env: DEPS=lowest
+      script:
+        - composer update --no-interaction --prefer-source --prefer-lowest
+        - composer test:units
+    - stage: lint
+      php: 7.1
+      script:
+        - composer install --no-interaction --prefer-source
+        - composer lint:syntax
+    - stage: lint
+      php: 7.1
+      script:
+        - composer install --no-interaction --prefer-source
+        - composer lint:style
+    - stage: big-test
+      php: 7.1
+      script:
+        - composer install --no-interaction --prefer-source
+        - composer test:coverage
+    - stage: big-test
+      php: 7.1
+      script:
+        - composer install --no-interaction --prefer-source
+        - composer require --dev humbug/humbug:^1.0@dev
+        - composer test:mutations
+    - stage: big-test
+      php: 5.6
+      script:
+        - cd test/ZF2
+        - composer install --no-interaction --prefer-source
+        - vendor/bin/phpunit
+    - stage: big-test
+      php: 5.6
+      script:
+        - cd test/ZF3
+        - composer install --no-interaction --prefer-source
+        - vendor/bin/phpunit
+
+notifications:
+  email: false
